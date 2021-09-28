@@ -1,4 +1,5 @@
 import csv
+from collections import defaultdict
 
 
 def _read_file(path_to_file):
@@ -19,22 +20,18 @@ def _write_file(name, data):
 
 
 def analyze_log(path_to_file):
-    most_requst_maria = {}
+    most_requst_maria = defaultdict(int)
     arnaldo_hamburguer = 0
     joao_asked = set()
     all_days = set()
     all_types_of_food = set()
-    # joao_never_asked = set()
     joao_days = set()
     reader = _read_file(path_to_file)
     for row in reader:
         all_days.add(row[2])
         all_types_of_food.add(row[1])
         if row[0] == "maria":
-            if row[1] in most_requst_maria:
-                most_requst_maria[row[1]] += 1
-            else:
-                most_requst_maria[row[1]] = 0
+            most_requst_maria[row[1]] += 1
         elif row[0] == "arnaldo" and row[1] == "hamburguer":
             arnaldo_hamburguer += 1
         elif row[0] == "joao":
@@ -44,7 +41,7 @@ def analyze_log(path_to_file):
         "hamburguer",
         arnaldo_hamburguer,
         all_types_of_food - joao_asked,
-        all_days-joao_days,
+        all_days - joao_days,
     ]
     _write_file("./data/mkt_campaign.txt", data)
     return None
