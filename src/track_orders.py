@@ -57,4 +57,5 @@ class TrackOrders:
                 day_frequency[day] += 1
         return min(day_frequency, key=lambda key: day_frequency[key])
 
-# fonte da função lambda = https://qastack.com.br/programming/268272/getting-key-with-maximum-value-in-dictionary
+# fonte da função lambda:
+# https://qastack.com.br/programming/268272/getting-key-with-maximum-value-in-dictionary
