@@ -18,7 +18,7 @@ class InventoryControl:
     }
 
     def __init__(self):
-        pass
+        print('ops')
 
     def add_new_order(self, costumer, order, day):
         pass
