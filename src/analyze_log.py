@@ -51,7 +51,3 @@ def analyze_log(path_to_file):
         return get_results(data_csv)
     except ValueError:
         raise NotImplementedError
-
-
-path_to_file = "data/orders_1.csv"
-print(analyze_log(path_to_file))
