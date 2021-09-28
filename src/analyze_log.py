@@ -63,5 +63,5 @@ def analyze_log(path_to_file):
         raise NotImplementedError
 
 
-path_to_file = "data/orders_1.csv"
-print(analyze_log(path_to_file))
+# path_to_file = "data/orders_1.csv"
+# print(analyze_log(path_to_file))
