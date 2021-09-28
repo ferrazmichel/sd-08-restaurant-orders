@@ -25,9 +25,7 @@ class InventoryControl:
         for key in self.INGREDIENTS.keys():
             self.available_dishes.add(key)
 
-    def add_new_order(self, costumer, order, day):
-        if order not in self.available_dishes:
-            return False
+    def remove_available_dishes(self, order):
         for ingredient in self.INGREDIENTS[order]:
             if (
                 self.ingredients_to_buy[ingredient] + 1
@@ -35,6 +33,11 @@ class InventoryControl:
 
             ):
                 self.available_dishes.discard(order)
+
+    def add_new_order(self, costumer, order, day):
+        if order not in self.available_dishes:
+            return False
+        self.remove_available_dishes(order)
         if order in self.available_dishes:
             for ingredient in self.INGREDIENTS[order]:
                 self.ingredients_to_buy[ingredient] += 1
@@ -44,4 +47,3 @@ class InventoryControl:
 
     def get_available_dishes(self):
         return self.available_dishes
-
