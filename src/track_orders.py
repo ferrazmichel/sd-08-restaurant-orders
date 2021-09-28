@@ -13,6 +13,8 @@ class TrackOrders:
 
     def add_new_order(self, costumer, order, day):
         self.orders.append((costumer, order, day))
+        self.menu.add(order)
+        self.week.add(day)
 
     def get_most_ordered_dish_per_costumer(self, costumer):
         orders_by_customer = {}
@@ -24,7 +26,11 @@ class TrackOrders:
         return Counter(orders_by_customer[costumer]).most_common()[0][0]
 
     def get_never_ordered_per_costumer(self, costumer):
-        pass
+        customer_order_set = set()
+        for person, dish, day in self.orders:
+            if person == costumer:
+                customer_order_set.add(dish)
+        return self.menu.difference(customer_order_set)
 
     def get_days_never_visited_per_costumer(self, costumer):
         pass
