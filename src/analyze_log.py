@@ -38,7 +38,7 @@ def analyze_log(path_to_file):
             joao_asked.add(row[1])
             joao_days.add(row[2])
     data = [
-        "hamburguer",
+        max(most_requst_maria, key=most_requst_maria.get),
         arnaldo_hamburguer,
         all_types_of_food - joao_asked,
         all_days - joao_days,
