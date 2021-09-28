@@ -40,7 +40,13 @@ class TrackOrders:
         return self.week.difference(days_visited)
 
     def get_busiest_day(self):
-        pass
+        day_frequency = {}
+        for person, dish, day in self.orders:
+            if day not in day_frequency:
+                day_frequency[day] = 1
+            else:
+                day_frequency[day] += 1
+        return max(day_frequency, key=lambda key: day_frequency[key])
 
     def get_least_busy_day(self):
         pass
