@@ -2,8 +2,10 @@ import csv
 from collections import Counter
 
 
-def analyze_log(path_to_file):
-    """Commit inicial do projeto"""
+def get_info(path_to_file):
+    """Recebe arquivi de pedidos e retorna um dicionario com pedidos
+    e respectivo dia da semana por pessoa, alem do menu da
+    lanchonete e dos dias da semana em sets"""
     customer_dict = {}
     menu = set()
     week = set()
@@ -16,6 +18,12 @@ def analyze_log(path_to_file):
                 customer_dict[order[0]] = [(order[1], order[2])]
             else:
                 customer_dict[order[0]].append((order[1], order[2]))
+    return customer_dict, menu, week
+
+
+def analyze_log(path_to_file):
+    """Faz analise do log de acordo com os requisitos"""
+    customer_dict, menu, week = get_info(path_to_file)
 
     maria_orders = []
     for order in customer_dict["maria"]:
