@@ -16,11 +16,13 @@ class InventoryControl:
         'massa': 50,
         'frango': 50,
     }
+    data = []
 
     def __init__(self):
         pass
 
     def add_new_order(self, costumer, order, day):
+        data.append([costumer, order, day])
         pass
 
     def get_quantities_to_buy(self):
