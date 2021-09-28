@@ -74,14 +74,17 @@ def analyze_log(path):
         raise FileNotFoundError(f"No such file or directory: '{path}'")
 
     data = import_data(path)
-    maria_requests = food_favorite_maria(data)
-    arnaldo_requests = hamburguer_request_by_arnaldo(data)
-    joao_requests = never_asked_joao(data)
-    visited = joao_never_visited(data)
+    question_one = food_favorite_maria(data)
+    question_two = hamburguer_request_by_arnaldo(data)
+    question_three = never_asked_joao(data)
+    question_four = joao_never_visited(data)
 
     txt = open("data/mkt_campaign.txt", "w")
     txt.write(
-        f"{maria_requests}\n{arnaldo_requests}\n{joao_requests}\n{visited}"
+        f"{question_one}\n{question_two}\n{question_three}\n{question_four}"
     )
     txt.close()
     return True
+
+# Consultado o seguinte PR:
+# https://github.com/tryber/sd-07-restaurant-orders/tree/marcelo-ivan-restaurant-orders
