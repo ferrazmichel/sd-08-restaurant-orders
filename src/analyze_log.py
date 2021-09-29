@@ -8,13 +8,9 @@ def analyze_log(path_to_file):
     tracker = TrackOrders()
     with open(path_to_file, mode='r') as read_file:
         result = csv.reader(read_file, delimiter="\n")
-        print(result)
-        print("AI")
         for row in result:
             contents.append(row)
-        print(contents)
     with open(output_file, mode='w') as write_file:
-        print("UI")
         print(
             tracker.get_most_ordered_dish_per_costumer("maria"),
             tracker.get_dish_per_costumer("arnaldo", "hamburguer"),
