@@ -40,13 +40,13 @@ class InventoryControl:
                     self.remove_available_dishes_by_ingredient(ingredient)
 
     def add_new_order(self, costumer, order, day):
-        if order not in self.available_dishes:
-            return False
         self.remove_available_dishes(order)
         if order in self.available_dishes:
             for ingredient in self.INGREDIENTS[order]:
                 if ingredient in self.MINIMUM_INVENTORY:
                     self.ingredients_to_buy[ingredient] += 1
+        if order not in self.available_dishes:
+            return False
 
     def get_quantities_to_buy(self):
         return self.ingredients_to_buy
