@@ -65,3 +65,10 @@ class TrackOrders:
         # ,max%20value%20of%20the%20dictionary.
         return min(days, key=days.get)
         pass
+
+    def get_how_many_times_dish_was_ordered(self, customer, dish):
+        times = 0
+        for order in self.orders:
+            if order[0] == customer and order[1] == dish:
+                times += 1
+        return times
