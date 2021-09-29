@@ -1,3 +1,6 @@
+from os import initgroups
+
+
 class InventoryControl:
     INGREDIENTS = {
         "hamburguer": ["pao", "carne", "queijo"],
@@ -20,10 +23,12 @@ class InventoryControl:
 
     def __init__(self):
         self.inventory = self.MINIMUM_INVENTORY.copy()
+        self.ingredients = self.INGREDIENTS.copy()
         self.orders = {}
 
     def add_new_order(self, costumer, order, day):
-        order_ingredientes = self.INGREDIENTS[order]
+        order_ingredientes = self.ingredients.get(order)
+
         temp_inventory = self.inventory.copy()
 
         for ingrediente in order_ingredientes:
@@ -48,3 +53,12 @@ class InventoryControl:
             quantities_to_buy[key] = abs(self.inventory[key] - value)
 
         return quantities_to_buy
+
+    def get_available_dishes(self):
+        for recipe_key, recipe_value in self.INGREDIENTS.items():
+            for item in recipe_value:
+                temp_item = self.ingredients.get(item)
+                if (temp_item == 0) and self.ingredients.get(recipe_key):
+                    del self.ingredients[recipe_key]
+
+        return set(self.ingredients.keys())
