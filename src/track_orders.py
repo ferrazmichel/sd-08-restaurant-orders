@@ -7,15 +7,11 @@ class TrackOrders:
         return len(self.orders)
 
     def add_new_order(self, costumer, order, day):
-        self.costumer = costumer
-        self.order = order
-        self.day = day
-        orders.append(tuple(costumer, order, day))
+        pass
 
     def get_most_ordered_dish_per_costumer(self, costumer):
         """Retorna um dict com o prato mais pedido pelo cliente"""
         # costumer=costumer, order=order, day=day
-
 
     def get_never_ordered_per_costumer(self, costumer):
         pass
