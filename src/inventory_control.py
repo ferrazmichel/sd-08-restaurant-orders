@@ -2,7 +2,6 @@ class InventoryControl:
     INGREDIENTS = {
         "hamburguer": ["pao", "carne", "queijo"],
         "pizza": ["massa", "queijo", "molho"],
-        "queijo-quente": ["pao", "queijo", "queijo"],
         "misto-quente": ["pao", "queijo", "presunto"],
         "coxinha": ["massa", "frango"],
     }
