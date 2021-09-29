@@ -1,13 +1,8 @@
-from os import initgroups
-
-
 class InventoryControl:
     INGREDIENTS = {
         "hamburguer": ["pao", "carne", "queijo"],
-        "pizza": ["massa", "queijo", "molho", "tomate"],
-        "queijo-quente": ["pao", "queijo", "queijo"],
+        "pizza": ["massa", "queijo", "molho"],
         "misto-quente": ["pao", "queijo", "presunto"],
-        "bauru": ["pao", "queijo", "presunto", "tomate"],
         "coxinha": ["massa", "frango"],
     }
 
@@ -57,8 +52,8 @@ class InventoryControl:
     def get_available_dishes(self):
         for recipe_key, recipe_value in self.INGREDIENTS.items():
             for item in recipe_value:
-                temp_item = self.ingredients.get(item)
-                if (temp_item == 0) and self.ingredients.get(recipe_key):
+                temp_item = self.inventory.get(item)
+                if temp_item == 0 and self.ingredients.get(recipe_key):
                     del self.ingredients[recipe_key]
 
         return set(self.ingredients.keys())
