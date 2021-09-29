@@ -32,7 +32,6 @@ class InventoryControl:
     def get_quantities_to_buy(self):
         result = {}
         for item in self.MINIMUM_INVENTORY:
-            print(self.MINIMUM_INVENTORY[item], self.ingredients[item])
             result[item] = (
                 self.MINIMUM_INVENTORY[item] - self.ingredients[item]
             )
@@ -40,12 +39,13 @@ class InventoryControl:
 
     def get_available_dishes(self):
         result = set()
-        set_of_ingradients = set(self.ingredients)
+        set_of_ingradients = set()
+        for key, value in self.ingredients.items():
+            if value > 0:
+                set_of_ingradients.add(key)
         recipes = self.INGREDIENTS
         for recipe in recipes:
             set_rec = set(recipes[recipe])
-            # print(set_rec, set_of_ingradients)
-            # print(set_rec.issubset(set_of_ingradients))
             if set_rec.issubset(set_of_ingradients):
                 result.add(recipe)
         return result
