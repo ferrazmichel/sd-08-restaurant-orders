@@ -38,16 +38,7 @@ def analyze_log(path_to_file):
             joao_days.add(item[2])
         maria_dict = Counter(count_maria_food)
 
-    # refazer usar Counter
     # https://www.ti-enxame.com/pt/python/encontrar-o-maior-valor-em-um-dicionario/1069289117/
-    # print(f"Prato mais pedido por Maria
-    # {max(maria_dict, key=maria_dict.get)}")
-    # print(f"Arnaldo Burger {arnaldo_hamburguers}")
-    # print(f"joao nunca pediu {set(menu) - set(joao_orders)}")
-    # print(f"joao_orders {joao_orders}")
-    # print(f"menu {menu}")
-    # print(f"joao_days {joao_days}")
-    # print(f"joao nao vai a lanchonete {set(work_days) - set(joao_days)}")
     maria_more_ordered = max(maria_dict, key=maria_dict.get)
     arnaldo_burguer = arnaldo_hamburguers
     joao_never_asked = set(menu) - set(joao_orders)
