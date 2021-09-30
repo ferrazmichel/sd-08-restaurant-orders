@@ -27,10 +27,20 @@ class TrackOrders:
             if item[0] == costumer:
                 more_ordered.append(item[1])
             costumer_dict = Counter(more_ordered)
+        # retorna a chave com o maior valor
+        # https://www.ti-enxame.com/pt/python/encontrar-o-maior-valor-em-um-dicionario/1069289117/
         return max(costumer_dict, key=costumer_dict.get)
 
     def get_never_ordered_per_costumer(self, costumer):
-        pass
+        """Este método utilizou a mesma lógica do 
+        analyze_log no quesito 'joao_never_asked' """
+        costumer_orders = set()
+        menu = set()
+        for item in self.orders:
+            menu.add(item[1])
+            if item[0] == costumer:
+                costumer_orders.add(item[1])
+        return set(menu) - set(costumer_orders)
 
     def get_days_never_visited_per_costumer(self, costumer):
         pass
