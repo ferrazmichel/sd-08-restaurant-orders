@@ -22,7 +22,14 @@ class TrackOrders:
         return max(foods.items(), key=operator.itemgetter(1))[0]
 
     def get_never_ordered_per_costumer(self, costumer):
-        pass
+        total_foods = set()
+        costumer_foods = set()
+        for order in self.orders:
+            total_foods.add(order[1])
+            if order[0] == costumer:
+                costumer_foods.add(order[1])
+        # Todos os pedido MENOS os pedidos feitos = pedidos nunca realizados
+        return total_foods - costumer_foods
 
     def get_days_never_visited_per_costumer(self, costumer):
         pass
