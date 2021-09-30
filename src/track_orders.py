@@ -43,7 +43,15 @@ class TrackOrders:
         return set(menu) - set(costumer_orders)
 
     def get_days_never_visited_per_costumer(self, costumer):
-        pass
+        """Este método utilizou a mesma lógica do
+        analyze_log no quesito 'joao_never_go' """
+        costumer_days = set()
+        work_days = set()
+        for item in self.orders:
+            work_days.add(item[2])
+            if item[0] == costumer:
+                costumer_days.add(item[2])
+        return work_days - costumer_days
 
     def get_busiest_day(self):
         pass
