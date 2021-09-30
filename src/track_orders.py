@@ -61,4 +61,8 @@ class TrackOrders:
         return max(busiest_dict, key=busiest_dict.get)
 
     def get_least_busy_day(self):
-        pass
+        least_busy_list = []
+        for item in self.orders:
+            least_busy_list.append(item[2])
+        least_busy_dict = Counter(least_busy_list)
+        return min(least_busy_dict, key=least_busy_dict.get)
