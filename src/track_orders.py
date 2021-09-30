@@ -1,3 +1,6 @@
+import operator
+
+
 class TrackOrders:
     def __init__(self):
         self.orders = []
@@ -9,7 +12,14 @@ class TrackOrders:
         self.orders.append((costumer, order, day))
 
     def get_most_ordered_dish_per_costumer(self, costumer):
-        pass
+        foods = {}
+        for order in self.orders:
+            if order[0] == costumer:
+                try:
+                    foods[order[1]] += 1
+                except KeyError:
+                    foods[order[1]] = 1
+        return max(foods.items(), key=operator.itemgetter(1))[0]
 
     def get_never_ordered_per_costumer(self, costumer):
         pass
