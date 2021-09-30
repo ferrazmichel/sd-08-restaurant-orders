@@ -32,7 +32,7 @@ class TrackOrders:
         return max(costumer_dict, key=costumer_dict.get)
 
     def get_never_ordered_per_costumer(self, costumer):
-        """Este método utilizou a mesma lógica do 
+        """Este método utilizou a mesma lógica do
         analyze_log no quesito 'joao_never_asked' """
         costumer_orders = set()
         menu = set()
