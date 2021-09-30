@@ -43,7 +43,21 @@ class TrackOrders:
         return total_days - costumer_days
 
     def get_busiest_day(self):
-        pass
+        days = {}
+        for order in self.orders:
+            try:
+                days[order[2]] += 1
+            except KeyError:
+                days[order[2]] = 1
+        # dia que mais se repete
+        return max(days.items(), key=operator.itemgetter(1))[0]
 
     def get_least_busy_day(self):
-        pass
+        days = {}
+        for order in self.orders:
+            try:
+                days[order[2]] += 1
+            except KeyError:
+                days[order[2]] = 1
+        # dia que menos se repete
+        return min(days.items(), key=operator.itemgetter(1))[0]
