@@ -5,8 +5,6 @@ from statistics import mode
 class TrackOrders:
     def __init__(self):
         self.order_data = []
-        self.set_order = set()
-        self.set_day = set()
 
     def __len__(self):
         return len(self.order_data)
