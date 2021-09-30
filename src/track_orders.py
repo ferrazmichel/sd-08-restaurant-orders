@@ -32,7 +32,15 @@ class TrackOrders:
         return total_foods - costumer_foods
 
     def get_days_never_visited_per_costumer(self, costumer):
-        pass
+        total_days = set()
+        costumer_days = set()
+        for order in self.orders:
+            total_days.add(order[2])
+            if order[0] == costumer:
+                costumer_days.add(order[2])
+        # Todos os dias MENOS dias que o costumer visitou
+        # = dias que nunca visitou
+        return total_days - costumer_days
 
     def get_busiest_day(self):
         pass
