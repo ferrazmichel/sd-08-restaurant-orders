@@ -4,10 +4,10 @@ from collections import Counter
 # https://docs.python.org/pt-br/3/library/collections.html#counter-objects
 
 
-def get_most_ordered_dish_per_costumer(file, name):
+def get_most_ordered_dish_per_costumer(file, costumer):
     orders = []
     for item in file:
-        if item[0] == name:
+        if item[0] == costumer:
             orders.append(item[1])
     count = Counter(orders)
     count_max = max(count.values())
@@ -17,11 +17,11 @@ def get_most_ordered_dish_per_costumer(file, name):
     return dish
 
 
-def get_dish_per_costumer(file, name, food):
+def get_dish_per_costumer(file, costumer, food):
     orders = []
     count = 0
     for item in file:
-        if item[0] == name:
+        if item[0] == costumer:
             orders.append(item[1])
     for dish in orders:
         if dish == food:
@@ -29,22 +29,22 @@ def get_dish_per_costumer(file, name, food):
     return count
 
 
-def get_never_ordered_per_costumer(file, name):
+def get_never_ordered_per_costumer(file, costumer):
     orders = []
     foods = {'hamburguer', 'pizza', 'coxinha', 'misto-quente'}
     for item in file:
-        if item[0] == name:
+        if item[0] == costumer:
             orders.append(item[1])
     orders = set(orders)
     foods = foods.difference(orders)
     return foods
 
 
-def get_days_never_visited_per_costumer(file, name):
+def get_days_never_visited_per_costumer(file, costumer):
     orders = set()
     days = {"segunda-feira", "terça-feira", "sabado"}
     for item in file:
-        if item[0] == name:
+        if item[0] == costumer:
             orders.add(item[2])
     days = days.difference(orders)
     return days
