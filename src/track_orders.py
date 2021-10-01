@@ -10,9 +10,8 @@ class TrackOrders:
         return len(self.order_data)
 
     def add_new_order(self, costumer, order, day):
-        # print(costumer, order, day)
         one_order = {"Nome": costumer, "Pedido": order, "Dia": day}
-        self.order_data.append(one_order)
+        return self.order_data.append(one_order)
 
     def get_most_ordered_dish_per_costumer(self, costumer):
         most_order = []
@@ -29,8 +28,6 @@ class TrackOrders:
             all_foods.add(each_order["Pedido"])
             if each_order["Nome"] == costumer:
                 order_costumer.add(each_order["Pedido"])
-        print(all_foods)
-        print(order_costumer)
         result_never_costumer = all_foods.difference(order_costumer)
         return result_never_costumer
 
@@ -41,8 +38,6 @@ class TrackOrders:
             all_days.add(each_day["Dia"])
             if each_day["Nome"] == costumer:
                 days_in.add(each_day["Dia"])
-        print(all_days)
-        print(days_in)
         result_never_visited = all_days.difference(days_in)
         return result_never_visited
 
