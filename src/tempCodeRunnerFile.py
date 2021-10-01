@@ -1,1 +1,1 @@
- foods = {'hamburguer', 'pizza', 'coxinha', 'misto-quente'}
+foods = {'hamburguer', 'pizza', 'coxinha', 'misto-quente'}
