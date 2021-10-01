@@ -24,18 +24,17 @@ def analyze_log(path_to_file):
     for valor in nome["arnaldo"]:
         if valor[0] == "hamburguer":
             arnaldo += 1
-    print(maria_maior)
-    print(arnaldo)
-    print(nome)
 
+    joao_pediu = set()
+    joao_dia = set()
+    for valor in nome["joao"]:
+        joao_pediu.add(valor[0])
+        joao_dia.add(valor[1])
 
-# Quantas vezes 'arnaldo' pediu 'hamburguer'?
+    string = (f"{maria_maior}\n{arnaldo}\n"
+    f"{joao_pediu.symmetric_difference(pedido)}\n"
+    f"{joao_dia.symmetric_difference(dia)}")
 
-# Quais pratos 'joao' nunca pediu?
-
-# Quais dias 'joao' nunca foi na lanchonete?
-
-# hamburguer
-# 1
-# {'pizza', 'coxinha', 'misto-quente'}
-# {'sabado', 'segunda-feira'}
+    file = open("data/mkt_campaign.txt", mode="w")
+    file.write(string)
+    file.close
