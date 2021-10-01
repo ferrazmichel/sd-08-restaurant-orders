@@ -44,7 +44,23 @@ class TrackOrders:
         return days
 
     def get_busiest_day(self):
-        pass
+        orders = []
+        for item in self.orders:
+            orders.append(item[2])
+        count = Counter(orders)
+        count_max = max(count.values())
+        for k, v in count.items():
+            if v == count_max:
+                day = k
+        return day
 
     def get_least_busy_day(self):
-        pass
+        orders = []
+        for item in self.orders:
+            orders.append(item[2])
+        count = Counter(orders)
+        count_min = min(count.values())
+        for k, v in count.items():
+            if v == count_min:
+                day = k
+        return day
