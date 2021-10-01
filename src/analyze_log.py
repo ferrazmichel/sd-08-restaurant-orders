@@ -22,8 +22,8 @@ def analyze_log(path_to_file):
         joao_dia.add(valor[1])
 
     string = (f"{maria_maior}\n{arnaldo}\n"
-        f"{joao_pediu.symmetric_difference(pedido)}\n"
-        f"{joao_dia.symmetric_difference(dia)}")
+              f"{joao_pediu.symmetric_difference(pedido)}\n"
+              f"{joao_dia.symmetric_difference(dia)}")
 
     file = open("data/mkt_campaign.txt", mode="w")
     file.write(string)
