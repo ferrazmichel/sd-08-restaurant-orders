@@ -5,7 +5,6 @@ class TrackOrders:
     def __init__(self):
         self.orders = {}
         self.menu = set()
-        self.work_days = set()
         self.days = []
 
     def __len__(self):
@@ -20,7 +19,6 @@ class TrackOrders:
         else:
             self.orders[costumer] = [(order, day)]
         self.menu.add(order)
-        self.work_days.add(day)
         self.days.append(day)
 
     def get_most_ordered_dish_per_costumer(self, costumer):
@@ -35,7 +33,7 @@ class TrackOrders:
 
     def get_days_never_visited_per_costumer(self, costumer):
         customer_attendace = set(order[1] for order in self.orders[costumer])
-        customer_absence = self.work_days.difference(customer_attendace)
+        customer_absence = set(self.days).difference(customer_attendace)
         return customer_absence
 
     def get_busiest_day(self):
