@@ -17,22 +17,13 @@ def analyze_log(path_to_file):
 
             restaurant_menu.add(meal)
             restaurant_dates.add(visit)
+            if customer not in customers_info:
+                customers_info[customer] = []
+            if customer not in customer_visits:
+                customer_visits[customer] = []
 
-            if customer in customers_info:
-                if meal in customers_info[customer]:
-                    customers_info[customer][meal] += 1
-                else:
-                    customers_info[customer].update({meal: 1})
-            else:
-                customers_info[customer] = {meal: 1}
-
-            if customer in customer_visits:
-                if visit in customer_visits[customer]:
-                    customer_visits[customer][visit] += 1
-                else:
-                    customer_visits[customer].update({visit: 1})
-            else:
-                customer_visits[customer] = {visit: 1}
+            customers_info[customer].append(meal)
+            customer_visits[customer].append(visit)
 
     # Create Reports for questions:
 
@@ -41,10 +32,17 @@ def analyze_log(path_to_file):
     #   Quais pratos 'joao' nunca pediu?
     #   Quais dias 'joao' nunca foi na lanchonete?
 
-    # first_answer = ""
-    # second_answer = ""
-    # third_answer = ""
-    # forth_answer = ""
+    maria_meals = customers_info["maria"]
+    first_answer = max(set(maria_meals), key=maria_meals.count)
 
-    print(customers_info)
-    print(customer_visits)
+    second_answer = customers_info["arnaldo"].count("hamburguer")
+
+    third_answer = restaurant_menu - set(customers_info["joao"])
+
+    forth_answer = restaurant_dates - set(customer_visits["joao"])
+
+    with open("data/mkt_campaign.txt", mode="w") as file_object:
+        file_object.write(first_answer + "\n")
+        file_object.write(str(second_answer) + "\n")
+        file_object.write(str(third_answer) + "\n")
+        file_object.write(str(forth_answer))
