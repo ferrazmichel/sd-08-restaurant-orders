@@ -24,7 +24,7 @@ class InventoryControl:
     def add_new_order(self, _costumer, order, _day):
         ingredients_used = self.INGREDIENTS[order]
 
-        for item in self.CURRENT_INVENTORY:
+        for item in ingredients_used:
             if self.CURRENT_INVENTORY[item] == 0:
                 return False
             if item in ingredients_used:
@@ -37,3 +37,16 @@ class InventoryControl:
             quantity_used = self.CURRENT_INVENTORY[item]
             itens_to_buy[item] = self.MINIMUM_INVENTORY[item] - quantity_used
         return itens_to_buy
+
+    def get_available_dishes(self):
+        restaurant_menu = list(self.INGREDIENTS.keys())
+        available_dishes = set()
+        for meal in restaurant_menu:
+            ingredients_used = self.INGREDIENTS[meal]
+            all_available = True
+            for item in ingredients_used:
+                if self.CURRENT_INVENTORY[item] == 0:
+                    all_available = False
+            if all_available:
+                available_dishes.add(meal)
+        return available_dishes
