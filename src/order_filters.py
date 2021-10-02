@@ -43,6 +43,4 @@ def find_less_repeated_value(all_orders, field):
             fieldValueDict[value] = 1
         else:
             fieldValueDict[value] += 1
-    # return (all_orders)
-    # return get_values_from_field(all_orders, 'day')
     return min(fieldValueDict, key=fieldValueDict.get)  # 1

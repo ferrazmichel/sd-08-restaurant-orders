@@ -25,8 +25,6 @@ class TrackOrders:
         client_didnt_order = set(all_dishes).difference(
             set(client_dishes)
         )  # 1
-        print('CLIENT_DISHES', client_dishes)
-        print('ALL_DISHES', all_dishes)
         return client_didnt_order
 
     def get_days_never_visited_per_costumer(self, costumer):
