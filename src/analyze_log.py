@@ -19,7 +19,6 @@ def common_order(customer, orders):
     most_frequent = 'teste'
     count[most_frequent] = 0
     for order in orders:
-        print(order['meal'])
         if customer == order['client']:
             if order['meal'] not in count:
                 count[order['meal']] = 1
