@@ -1,6 +1,7 @@
 import csv
 from collections import Counter
 
+
 def analyze_log(path_to_file):
 
     with open(path_to_file) as csv_file:
