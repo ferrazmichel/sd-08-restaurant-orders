@@ -44,9 +44,9 @@ class InventoryControl:
 
     def get_available_dishes(self):
         available_ingredients = {
-            ing
-            for ing in self.ingredients_stock
-            if self.ingredients_stock[ing] > 0
+            ingredient
+            for ingredient in self.ingredients_stock
+            if self.ingredients_stock[ingredient] > 0
         }
         return {
             recipe
