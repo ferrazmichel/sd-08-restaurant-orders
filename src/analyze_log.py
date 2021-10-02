@@ -34,12 +34,21 @@ def Joao_never_request(orders_list):
     return set_foods - set_Joao_requests
 
 
+def days_of_absent_Joao(orders_list):
+    set_days = {order["Dia"] for order in orders_list}
+    set_Joao_days = {order["Dia"]
+                     for order in orders_list
+                     if order["Nome"] == "joao"}
+    return set_days - set_Joao_days
+
+
 def analyze_log(path_to_file):
     with open(path_to_file) as file:
         orders_reader = csv.reader(file, delimiter=",")
-        orders_list = [{"Nome": row[0], "Comida": row[1], "dia": row[2]}
+        orders_list = [{"Nome": row[0], "Comida": row[1], "Dia": row[2]}
                        for row in orders_reader]
-    return Joao_never_request(orders_list)
-
-
-print(analyze_log("data/orders_1.csv"))
+    with open('data/mkt_campaign.txt', 'w') as file:
+        file.write(f'{more_request_by_Maria(orders_list)}\n'
+                   f'{count_hamburger_for_arnaldo(orders_list)}\n'
+                   f'{Joao_never_request(orders_list)}\n'
+                   f'{days_of_absent_Joao(orders_list)}')
