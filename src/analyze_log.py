@@ -6,7 +6,7 @@ def most_ordered_meal(client, orders):
 
     for requested_food in orders:
         # print(requested_food)
-        if client == requested_food['client']:
+        if client == requested_food['costumer']:
             if requested_food['order'] not in food:
                 food[requested_food['order']] = 1
             else:
@@ -18,7 +18,7 @@ def how_many_times_burguer_was_ordered(client, orders):
     food = {}
 
     for requested_food in orders:
-        if client == requested_food['client']:
+        if client == requested_food['costumer']:
             if requested_food['order'] not in food:
                 food[requested_food['order']] = 1
             else:
@@ -32,7 +32,7 @@ def food_never_ordered(client, orders):
     for requested_food in orders:
         all_orders.add(requested_food['order'])
     for requested_food in orders:
-        if client == requested_food['client']:
+        if client == requested_food['costumer']:
             order.add(requested_food['order'])
     return all_orders - order
 
@@ -43,7 +43,7 @@ def never_went_to_diner(client, orders):
     for requested_food in orders:
         all_date.add(requested_food['day'])
     for requested_food in orders:
-        if client == requested_food['client']:
+        if client == requested_food['costumer']:
             date.add(requested_food['day'])
     return all_date - date
 
@@ -53,9 +53,9 @@ def read_csv_file(path):
     with open(path) as file:
         read = csv.reader(file, delimiter=',', quotechar='"')
         for row in read:
-            client, order, day = row
+            costumer, order, day = row
             data.append(
-                {'client': client, 'order': order, 'day': day}
+                {'costumer': costumer, 'order': order, 'day': day}
             )
 
     return data
