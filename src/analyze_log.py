@@ -26,12 +26,20 @@ def count_hamburger_for_arnaldo(orders_list):
     return count['Hanburger']
 
 
+def Joao_never_request(orders_list):
+    set_foods = {order["Comida"] for order in orders_list}
+    set_Joao_requests = {order["Comida"]
+                         for order in orders_list
+                         if order["Nome"] == "joao"}
+    return set_foods - set_Joao_requests
+
+
 def analyze_log(path_to_file):
     with open(path_to_file) as file:
         orders_reader = csv.reader(file, delimiter=",")
         orders_list = [{"Nome": row[0], "Comida": row[1], "dia": row[2]}
                        for row in orders_reader]
-    return count_hamburger_for_arnaldo(orders_list)
+    return Joao_never_request(orders_list)
 
 
 print(analyze_log("data/orders_1.csv"))
