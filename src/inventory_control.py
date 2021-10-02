@@ -14,12 +14,26 @@ class InventoryControl:
         'massa': 50,
         'frango': 50,
     }
+    CURRENT_INVENTORY = {}
 
     def __init__(self):
+        for item in self.MINIMUM_INVENTORY:
+            self.CURRENT_INVENTORY[item] = self.MINIMUM_INVENTORY[item]
         pass
 
-    def add_new_order(self, costumer, order, day):
+    def add_new_order(self, _costumer, order, _day):
+        ingredients_used = self.INGREDIENTS[order]
+
+        for item in self.CURRENT_INVENTORY:
+            if self.CURRENT_INVENTORY[item] == 0:
+                return False
+            if item in ingredients_used:
+                self.CURRENT_INVENTORY[item] -= 1
         pass
 
     def get_quantities_to_buy(self):
-        pass
+        itens_to_buy = {}
+        for item in self.CURRENT_INVENTORY:
+            quantity_used = self.CURRENT_INVENTORY[item]
+            itens_to_buy[item] = self.MINIMUM_INVENTORY[item] - quantity_used
+        return itens_to_buy
