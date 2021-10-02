@@ -28,6 +28,9 @@ class InventoryControl:
         }
 
     def add_new_order(self, costumer, order, day):
+        available_dishes = self.get_available_dishes()
+        if order not in available_dishes:
+            return False
         used_ingredients = self.INGREDIENTS[order]
         for ingredient in used_ingredients:
             self.ingredients_stock[ingredient] -= 1
@@ -37,4 +40,16 @@ class InventoryControl:
         return {
             ing: self.MINIMUM_INVENTORY[ing] - self.ingredients_stock[ing]
             for ing in self.ingredients_stock
+        }
+
+    def get_available_dishes(self):
+        available_ingredients = {
+            ing
+            for ing in self.ingredients_stock
+            if self.ingredients_stock[ing] > 0
+        }
+        return {
+            recipe
+            for recipe in self.INGREDIENTS
+            if available_ingredients.issuperset(self.INGREDIENTS[recipe])
         }
