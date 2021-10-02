@@ -17,12 +17,21 @@ def more_request_by_Maria(orders_list):
     return most_frequent
 
 
+def count_hamburger_for_arnaldo(orders_list):
+    count = {'Hanburger': 0}
+    for order in orders_list:
+        name, food = (order["Nome"], order["Comida"])
+        if name == 'arnaldo' and food == 'hamburguer':
+            count['Hanburger'] += 1
+    return count['Hanburger']
+
+
 def analyze_log(path_to_file):
     with open(path_to_file) as file:
         orders_reader = csv.reader(file, delimiter=",")
         orders_list = [{"Nome": row[0], "Comida": row[1], "dia": row[2]}
                        for row in orders_reader]
-    return more_request_by_Maria(orders_list)
+    return count_hamburger_for_arnaldo(orders_list)
 
 
 print(analyze_log("data/orders_1.csv"))
