@@ -1,5 +1,6 @@
 import csv
 
+
 def most_requested_plate(customer, orders):
     meals = {}
     for order in orders:
@@ -56,7 +57,7 @@ def open_csv(path):
 def write_file(str):
     with open('data/mkt_campaign.txt', mode='w') as file:
         file.writelines(str)
-        
+
 
 def analyze_log(path):
     fileData = []
@@ -71,4 +72,3 @@ def analyze_log(path):
     )
 
     write_file(str)
-    
