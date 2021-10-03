@@ -1,4 +1,3 @@
-from os import confstr_names
 from src.Analyzer import Analyzer
 
 
