@@ -33,6 +33,3 @@ def analyze_log(path_to_file):
     arquive.write(f"{str(count)}\n")
     arquive.write(f"{str(all_food - orders_joao)}\n")
     arquive.write(f"{str(date - data_joao)}\n")
-
-
-analyze_log("./data/orders_1.csv")
