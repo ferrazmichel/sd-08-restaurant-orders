@@ -1,11 +1,33 @@
 import csv
 
 
+def generate_answers(rest_menu, rest_days, orders, visits):
+    # Create Reports for questions:
+    #   Qual o prato mais pedido por 'maria'?
+    #   Quantas vezes 'arnaldo' pediu 'hamburguer'?
+    #   Quais pratos 'joao' nunca pediu?
+    #   Quais dias 'joao' nunca foi na lanchonete?
+
+    first_answer = max(set(orders["maria"]), key=orders["maria"].count)
+
+    second_answer = orders["arnaldo"].count("hamburguer")
+
+    third_answer = rest_menu - set(orders["joao"])
+
+    forth_answer = rest_days - set(visits["joao"])
+
+    with open("data/mkt_campaign.txt", mode="w") as file_object:
+        file_object.write(first_answer + "\n")
+        file_object.write(str(second_answer) + "\n")
+        file_object.write(str(third_answer) + "\n")
+        file_object.write(str(forth_answer))
+
+
 def analyze_log(path_to_file):
     restaurant_menu = set()
     restaurant_dates = set()
-    customers_info = dict()
-    customer_visits = dict()
+    customers_orders = dict()
+    customers_visits = dict()
 
     # Data Treatment
     with open(path_to_file, "r") as file:
@@ -15,34 +37,20 @@ def analyze_log(path_to_file):
             meal = row[1]
             visit = row[2]
 
+            # set restaurant menu and dates
             restaurant_menu.add(meal)
             restaurant_dates.add(visit)
-            if customer not in customers_info:
-                customers_info[customer] = []
-            if customer not in customer_visits:
-                customer_visits[customer] = []
 
-            customers_info[customer].append(meal)
-            customer_visits[customer].append(visit)
+            # set new customer
+            if customer not in customers_orders:
+                customers_orders[customer] = []
+            if customer not in customers_visits:
+                customers_visits[customer] = []
 
-    # Create Reports for questions:
+            # add customers order and date of visit
+            customers_orders[customer].append(meal)
+            customers_visits[customer].append(visit)
 
-    #   Qual o prato mais pedido por 'maria'?
-    #   Quantas vezes 'arnaldo' pediu 'hamburguer'?
-    #   Quais pratos 'joao' nunca pediu?
-    #   Quais dias 'joao' nunca foi na lanchonete?
-
-    maria_meals = customers_info["maria"]
-    first_answer = max(set(maria_meals), key=maria_meals.count)
-
-    second_answer = customers_info["arnaldo"].count("hamburguer")
-
-    third_answer = restaurant_menu - set(customers_info["joao"])
-
-    forth_answer = restaurant_dates - set(customer_visits["joao"])
-
-    with open("data/mkt_campaign.txt", mode="w") as file_object:
-        file_object.write(first_answer + "\n")
-        file_object.write(str(second_answer) + "\n")
-        file_object.write(str(third_answer) + "\n")
-        file_object.write(str(forth_answer))
+    generate_answers(
+        restaurant_menu, restaurant_dates, customers_orders, customers_visits
+        )
