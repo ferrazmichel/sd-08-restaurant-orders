@@ -26,7 +26,7 @@ def analyze_log(path_to_file):
 
     arquive = open('data'+'/'+'mkt_campaign.txt', 'w')
     # https://www.delftstack.com/pt/howto/python/find-max-value-in-dictionary-python/#:~:text=Copy%20key3-,Utilize%20max()%20e%20dict.,%C3%A9%20utilizado%20o%20m%C3%A9todo%20dict.
-    # Obter o maior valor de um dicionario
+    # Obter a chave com o maior valor de um dicionario
     arquive.write(
         f"{max(Counter(maria_lanches),key=Counter(maria_lanches).get)}\n"
     )
