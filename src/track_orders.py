@@ -4,15 +4,13 @@ from src.Analyzer import Analyzer
 class TrackOrders:
     def __init__(self):
         self.orders = []
-        self.count = 0
         self.analyzer = Analyzer(self.orders)
 
     def __len__(self):
-        return self.count
+        return len(self.orders)
 
     def add_new_order(self, costumer, order, day):
         self.orders.append({"client": costumer, "item": order, "day": day})
-        self.count += 1
 
     def get_most_ordered_dish_per_costumer(self, costumer):
         return self.analyzer.get_most_ordered_item(costumer)
