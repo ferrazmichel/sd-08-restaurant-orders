@@ -1,12 +1,24 @@
+from statistics import mode
+
 class TrackOrders:
+    def __init__(self):
+        self.orders = []
+
     def __len__(self):
-        pass
+        return len(self.orders)
 
     def add_new_order(self, costumer, order, day):
-        pass
+        self.orders.append([costumer, order, day])
+        self.orders
 
     def get_most_ordered_dish_per_costumer(self, costumer):
-        pass
+        pedido = []
+        for valor in self.orders:
+            if valor[0] == costumer:
+                pedido.append(valor[1])
+        maior = mode(pedido)
+        print(maior)
+        maior
 
     def get_never_ordered_per_costumer(self, costumer):
         pass
