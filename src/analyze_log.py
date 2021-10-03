@@ -26,5 +26,16 @@ def dishes_never_ordered(name, orders):
     return all_orders.difference(client_order)
 
 
+def days_never_gone(name, days):
+    days_never_gone = set()
+    all_days = set()
+    for day_row in days:
+        all_days.add(day_row[2])
+    for day_row in days:
+        if day_row[0] == name:
+            days_never_gone.add([2])
+    return all_days.difference(days_never_gone)
+
+
 def analyze_log(path_to_file):
     raise NotImplementedError
