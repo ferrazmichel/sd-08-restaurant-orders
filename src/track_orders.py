@@ -40,7 +40,13 @@ class TrackOrders:
         return general_days_dict - costumer_days_dict
 
     def get_busiest_day(self):
-        pass
+        general_days = [day[2] for day in self.orders]
+        general_days_dict = {i: general_days.count(i) for i in general_days}
+        max_key = max(general_days_dict, key=general_days_dict.get)
+        return max_key
 
     def get_least_busy_day(self):
-        pass
+        general_days = [day[2] for day in self.orders]
+        general_days_dict = {i: general_days.count(i) for i in general_days}
+        min_key = min(general_days_dict, key=general_days_dict.get)
+        return min_key
