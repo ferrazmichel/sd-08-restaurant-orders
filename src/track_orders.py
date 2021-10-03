@@ -25,7 +25,7 @@ class TrackOrders:
         return self.analyzer.get_busiest_day()
 
     def get_least_busy_day(self):
-        return self.analyzer.get_less_busy_day()
+        return self.analyzer.get_least_busy_day()
 
     def get_order_frequency_per_costumer(self, customer_name, item_name):
         return self.analyzer.get_client_item_count(customer_name, item_name)

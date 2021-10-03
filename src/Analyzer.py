@@ -46,7 +46,7 @@ class Analyzer:
             .pop()[0]
         )
 
-    def get_less_busy_day(self):
+    def get_least_busy_day(self):
         return (
             Counter([order["day"] for order in self.data])
             .most_common()

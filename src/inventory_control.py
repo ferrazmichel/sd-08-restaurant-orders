@@ -53,8 +53,3 @@ class InventoryControl:
             for dish in InventoryControl.INGREDIENTS
             if self.__is_dish_available(dish)
         }
-
-
-# if __name__ == "__main__":
-#     control = InventoryControl()
-#     print(control.get_quantities_to_buy())
