@@ -8,5 +8,4 @@ def analyze_log(path_to_file):
         result = open('data/mkt_campaign.txt', 'a')
         result.write(maria)
 
-
 # print(analyze_log('/home/tandy/trybe/projects/computer-science/sd-08-restaurant-orders/data/orders_1.csv'))
