@@ -1,0 +1,6 @@
+        # print(max(Counter(maria_lanches), key=Counter(maria_lanches).get))
+        # print(count)
+        # print(all_food)
+        # print(orders_joao)
+        # print(all_food - orders_joao)
+        # print(date - data_joao)
