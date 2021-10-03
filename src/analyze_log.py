@@ -15,7 +15,15 @@ def repeated_dishes(name, dish, orders):
     return len(client_order)
 
 
-
+def dishes_never_ordered(name, orders):
+    client_order = set()
+    all_orders = set()
+    for order_row in orders:
+        all_orders.add(order_row[1])
+    for client_row in orders:
+        if client_row[0] == name:
+            client_order.add(client_row[1])
+    return all_orders.difference(client_order)
 
 
 def analyze_log(path_to_file):
