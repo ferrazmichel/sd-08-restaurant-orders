@@ -15,9 +15,9 @@ def meal_most_ordered(name, orders):
     for item in orders:
         if item[0] == name:
             meals.append(item[1])
-        # https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
+        # https://note.nkmk.me/python-collections-counter/
         occurence_count = Counter(meals)
-        return occurence_count.most_common(1)[0][0]
+        return occurence_count.most_common()[0][0]
 
 
 def count_meal(name, meal_selected, orders):
