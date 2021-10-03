@@ -29,7 +29,9 @@ class TrackOrders:
         pass
 
     def get_busiest_day(self):
-        pass
+        day_list = list(record[2] for record in self.ordered_dishes)
+        return Counter(day_list).most_common()[0][0]
 
     def get_least_busy_day(self):
-        pass
+        day_list = list(record[2] for record in self.ordered_dishes)
+        return Counter(day_list).most_common()[-1][0]
