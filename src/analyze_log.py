@@ -1,5 +1,6 @@
 import csv
 
+
 class plate:
 
     @staticmethod
@@ -47,6 +48,7 @@ class plate:
             if order[0] == name:
                 days_with_orders.add(order[2])
         return all_days.difference(days_with_orders)
+
 
 def analyze_log(path_to_file):
     if path_to_file.split('.')[1] != 'csv':
