@@ -16,9 +16,7 @@ class TrackOrders:
         for valor in self.orders:
             if valor[0] == costumer:
                 pedido.append(valor[1])
-        maior = mode(pedido)
-        print(maior)
-        maior
+        return mode(pedido)
 
     def get_never_ordered_per_costumer(self, costumer):
         pass
