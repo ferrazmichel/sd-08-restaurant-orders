@@ -1,4 +1,4 @@
-from statistics import mode
+from statistics import mode, median_low
 
 
 class TrackOrders:
@@ -46,4 +46,7 @@ class TrackOrders:
         return mode(todos_dias)
 
     def get_least_busy_day(self):
-        pass
+        todos_dias = []
+        for valor in self.orders:
+            todos_dias.append(valor[2])
+        return median_low(todos_dias)
