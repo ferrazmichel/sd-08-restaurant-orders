@@ -29,10 +29,18 @@ class TrackOrders:
         return todos_pedidos-costumer_pediu
 
     def get_days_never_visited_per_costumer(self, costumer):
-        pass
+        todos_dias = set()
+        costumer_visitou = set()
+        for valor in self.orders:
+            todos_dias.add(valor[2])
+        for valor in self.orders:
+            if valor[0] == costumer:
+                costumer_visitou.add(valor[2])
+        return todos_dias-costumer_visitou
 
     def get_busiest_day(self):
         pass
 
     def get_least_busy_day(self):
         pass
+
