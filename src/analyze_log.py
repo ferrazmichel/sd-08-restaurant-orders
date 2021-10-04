@@ -24,7 +24,8 @@ def pedidos_maria(orders):
                 data[order["food"]] = 1
             else:
                 data[order["food"]] += 1
-    return max(data, key = data.get)
+    return max(data, key=data.get)
+
 
 def arnaldo_request(orders):
     contador = 0
@@ -43,6 +44,7 @@ def joao_nunca_pediu(orders):
             pedidos_joao.add(order["food"])
     return pedidos - pedidos_joao
 
+
 def dia_joao_nao_foi(orders):
     dias = set()
     dias_joao_foi = set()
@@ -59,4 +61,5 @@ def analyze_log(path_to_file):
     arnaldo_pedido = arnaldo_request(orders)
     joao_nao_pediu = joao_nunca_pediu(orders)
     joao_nao_foi = dia_joao_nao_foi(orders)
-    write_file(f"{maria_pedido}\n{arnaldo_pedido}\n{joao_nao_pediu}\n{joao_nao_foi}")
+    resultado = f"{maria_pedido}\n{arnaldo_pedido}\n{joao_nao_pediu}\n{joao_nao_foi}"
+    write_file(resultado)
