@@ -19,15 +19,14 @@ class TrackOrders:
         return mode(pedido)
 
     def get_never_ordered_per_costumer(self, costumer):
-        # nunca_pediu = set()
-        # nunca_pediu = set()
+        todos_pedidos = set()
+        costumer_pediu = set()
         for valor in self.orders:
-            print("valor")
-            print(valor[1])
-        #     nunca_pediu.add(valor[0][1])
-        # print(nunca_pediu)
-        # return nunca_pediu
-
+            todos_pedidos.add(valor[1])
+        for valor in self.orders:
+            if valor[0] == costumer:
+                costumer_pediu.add(valor[1])
+        return todos_pedidos-costumer_pediu
 
     def get_days_never_visited_per_costumer(self, costumer):
         pass
