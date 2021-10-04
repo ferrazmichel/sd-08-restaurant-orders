@@ -57,9 +57,9 @@ def dia_joao_nao_foi(orders):
 
 def analyze_log(path_to_file):
     orders = read_file(path_to_file)
-    maria_pedido = pedidos_maria(orders)
-    arnaldo_pedido = arnaldo_request(orders)
-    joao_nao_pediu = joao_nunca_pediu(orders)
+    maria_ped = pedidos_maria(orders)
+    arnaldo_ped = arnaldo_request(orders)
+    joao_nao_ped = joao_nunca_pediu(orders)
     joao_nao_foi = dia_joao_nao_foi(orders)
-    resultado = f"{maria_pedido}\n{arnaldo_pedido}\n{joao_nao_pediu}\n{joao_nao_foi}"
+    resultado = f"{maria_ped}\n{arnaldo_ped}\n{joao_nao_ped}\n{joao_nao_foi}"
     write_file(resultado)
