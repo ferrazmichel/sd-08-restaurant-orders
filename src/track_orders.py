@@ -19,7 +19,15 @@ class TrackOrders:
         return mode(pedido)
 
     def get_never_ordered_per_costumer(self, costumer):
-        pass
+        # nunca_pediu = set()
+        # nunca_pediu = set()
+        for valor in self.orders:
+            print("valor")
+            print(valor[1])
+        #     nunca_pediu.add(valor[0][1])
+        # print(nunca_pediu)
+        # return nunca_pediu
+
 
     def get_days_never_visited_per_costumer(self, costumer):
         pass
@@ -29,3 +37,11 @@ class TrackOrders:
 
     def get_least_busy_day(self):
         pass
+
+# 2.4 - Será validado se, ao executar get_never_ordered_per_costumer, o método retorna o pedido que o cliente nunca fez.
+
+# 2.5 - Será validado se, ao executar get_days_never_visited_per_costumer, o método retorna o dias que o cliente nunca visitou.
+
+# 2.6 - Será validado se, ao executar o método get_busiest_day, o método retorna o dia mais movimentado.
+
+# 2.7 - Será validado se, ao executar o método get_least_busy_day, o método retorna o dia menos movimentado.
