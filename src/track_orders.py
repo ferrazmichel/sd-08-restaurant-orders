@@ -2,6 +2,7 @@ from src.analyze_log import (
     most_ordered, never_ordered, without_orders
 )
 
+
 class TrackOrders:
     def __init__(self):
         self.orders = []
