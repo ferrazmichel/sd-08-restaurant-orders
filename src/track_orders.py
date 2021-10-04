@@ -1,5 +1,6 @@
 from statistics import mode
 
+
 class TrackOrders:
     def __init__(self):
         self.orders = []
@@ -39,8 +40,10 @@ class TrackOrders:
         return todos_dias-costumer_visitou
 
     def get_busiest_day(self):
-        pass
+        todos_dias = []
+        for valor in self.orders:
+            todos_dias.append(valor[2])
+        return mode(todos_dias)
 
     def get_least_busy_day(self):
         pass
-
