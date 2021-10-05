@@ -14,7 +14,7 @@ def print_info(tracker, control):
 
 def main():
     topic = 'order'
-    path = ""
+    path = "data/orders_1.csv"
 
     tracker = TrackOrders()
     control = InventoryControl()
@@ -32,5 +32,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print("Olá")
     main()
