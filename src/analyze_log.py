@@ -58,6 +58,3 @@ def get_joao_not_visited_days(order_dict):
     )
 
     return str(all_days - joao_days)
-
-
-analyze_log("data/orders_1.csv")
