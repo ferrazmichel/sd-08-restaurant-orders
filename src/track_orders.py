@@ -25,7 +25,7 @@ class TrackOrders:
 
     def get_days_never_visited_per_costumer(self, costumer):
         pass
-    
+
     def orders_count(self):
         days_orders = {}
         for [_, _, day] in self.orders:
@@ -38,7 +38,7 @@ class TrackOrders:
     def get_busiest_day(self):
         orders_amount = self.orders_count()
         return max(orders_amount, key=orders_amount.get)
-    
+
     def get_least_busy_day(self):
         orders_amount = self.orders_count()
         return min(orders_amount, key=orders_amount.get)

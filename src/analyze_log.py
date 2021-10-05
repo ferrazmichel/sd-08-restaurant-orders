@@ -1,24 +1,24 @@
 def person_orders(person_list):
     food_amount = {}
-    
+
     for food in person_list:
         try:
             food_amount[food["order"]] += 1
         except KeyError:
             food_amount[food["order"]] = 1
-    
+
     return food_amount
 
 
 def person_dates(person_list):
     date_amount = {}
-    
+
     for date in person_list:
         try:
             date_amount[date["day"]] += 1
         except KeyError:
             date_amount[date["day"]] = 1
-    
+
     return date_amount
 
 
@@ -40,9 +40,9 @@ def never_frequented_joao(joao):
         "terça-feira",
         "quarta-feira",
         "quinta-feira",
-        "sexta-feira", 
-        "sabado", 
-        "domingo", 
+        "sexta-feira",
+        "sabado",
+        "domingo",
     ]
     not_frequented = []
     joao_dates = person_dates(joao)
@@ -74,7 +74,8 @@ def analyze_log(path_to_file):
         arnaldo_orders = person_orders(orders_by_person["arnaldo"])
         arnaldo_answer = arnaldo_orders["hamburguer"]
 
-        joao_order_answer = never_ordered_joao(orders_by_person["joao"], available_orders)
+        joao_order_answer = never_ordered_joao(
+            orders_by_person["joao"], available_orders)
         joao_day_answer = never_frequented_joao(orders_by_person["joao"])
 
         result = open('data/mkt_campaign.txt', 'w')
