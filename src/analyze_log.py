@@ -39,6 +39,7 @@ def get_all_orders(data_csv):
             f"{result_joao_days}"
         )
 
+
 def analyze_log(path_to_file):
     try:
         with open(path_to_file) as job:
