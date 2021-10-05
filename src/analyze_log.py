@@ -17,7 +17,6 @@ def most_ordered_meal(client, orders):
     food = {}
 
     for requested_food in orders:
-        print(requested_food)
         if client == requested_food['client']:
             if requested_food['order'] not in food:
                 food[requested_food['order']] = 1
