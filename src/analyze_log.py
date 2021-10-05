@@ -15,18 +15,18 @@ def read_csv(path_to_file):
 
 def most_ordered(customer, orders):
     count = {}
-    most_frequent = ''
-    count[most_frequent] = 0
+    most_ordered = ''
+    count[most_ordered] = 0
     for order in orders:
         if customer == order['client']:
             if order['meal'] not in count:
                 count[order['meal']] = 1
             else:
                 count[order['meal']] += 1
-            if count[order['meal']] > count[most_frequent]:
-                most_frequent = order['meal']
+            if count[order['meal']] > count[most_ordered]:
+                most_ordered = order['meal']
 
-    return most_frequent
+    return most_ordered
 
 
 def count_order(customer, meal_selected, orders):
