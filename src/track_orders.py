@@ -20,12 +20,12 @@ class TrackOrders:
         )
 
     def get_most_ordered_dish_per_costumer(self, costumer):
-        meals = []
+        meals_list = []
         for order in self.orders:
-            if order[0] == costumer:
-                meals.append(order[1])
+            if order["name"] == costumer:
+                meals_list.append(order["order"])
 
-        return mode(meals)
+        return mode(meals_list)
 
     def get_never_ordered_per_costumer(self, costumer):
         costumer_dishe = set()
