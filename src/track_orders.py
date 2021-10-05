@@ -20,7 +20,6 @@ class TrackOrders:
         return max(dishes_dict, key=dishes_dict.get)
 # https://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
 
-
     def get_never_ordered_per_costumer(self, costumer):
         all_foods = set()
         costumer_orders = set()
