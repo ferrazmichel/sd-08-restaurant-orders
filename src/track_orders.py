@@ -26,7 +26,14 @@ class TrackOrders:
         return rangos.difference(order_costumer)
 
     def get_days_never_visited_per_costumer(self, costumer):
-        pass
+        working_days = set()
+        order_costumer = set()
+        for prato in self.orders:
+            working_days.add(prato[2])
+        for prato in self.orders:
+            if prato[0] == costumer:
+                order_costumer.add(prato[2])
+        return working_days.difference(order_costumer)
 
     def get_busiest_day(self):
         pass
