@@ -1,5 +1,6 @@
 import csv
 # https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
+# https://www.programiz.com/python-programming/methods/set/difference
 
 
 def analyze_log(path_to_file):
