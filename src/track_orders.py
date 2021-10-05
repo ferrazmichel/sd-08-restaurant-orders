@@ -1,6 +1,7 @@
 from statistics import mode
 # https://www.geeksforgeeks.org/python-statistics-mode-function/
-
+# https://www.geeksforgeeks.org/python-set-difference/#:~:text=The%20difference%20between%20the%20two,the%20difference%20between%20two%20sets.&text=We%20can%20also%20use%20%E2%80%93%20operator,the%20difference%20between%20two%20sets.
+# https://www.w3schools.com/python/ref_set_difference.asp
 
 class TrackOrders:
     def __len__(self):
@@ -23,7 +24,14 @@ class TrackOrders:
         return mode(meals)
 
     def get_never_ordered_per_costumer(self, costumer):
-        pass
+        costumer_dishe = set()
+        list_dishes = set()
+
+        for value in self.orders:
+            if value["name"] == costumer:
+                costumer_dishe.add(value["order"])
+            list_dishes.add(value["order"])
+        return list_dishes.difference(costumer_dishe)
 
     def get_days_never_visited_per_costumer(self, costumer):
         days_customer = set()
