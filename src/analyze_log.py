@@ -25,7 +25,6 @@ def person_dates(person_list):
 def never_ordered_joao(joao, available_order):
     not_ordered = []
     joao_foods = person_orders(joao)
-
     for order in available_order:
         try:
             bool(joao_foods[order])
