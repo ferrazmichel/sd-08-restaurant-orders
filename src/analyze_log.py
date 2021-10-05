@@ -1,5 +1,6 @@
 import csv
 
+
 def read_csv_file(path):
     data = []
     with open(path) as file:
@@ -12,6 +13,7 @@ def read_csv_file(path):
 
     return data
 
+
 def most_popular(client, orders):
     food = {}
 
@@ -22,6 +24,7 @@ def most_popular(client, orders):
             else:
                 food[order['order']] += 1
     return max(food, key=food.get)
+
 
 def number_of_orders(client, orders):
     food = {}
@@ -34,6 +37,7 @@ def number_of_orders(client, orders):
                 food[order['order']] += 1
     return food['hamburguer']
 
+
 def never_ordered(client, orders):
     order_set = set()
     all_orders = set()
@@ -43,6 +47,7 @@ def never_ordered(client, orders):
         if client == order['costumer']:
             order_set.add(order['order'])
     return all_orders - order_set
+
 
 def never_have_been(client, orders):
     date = set()
@@ -54,9 +59,11 @@ def never_have_been(client, orders):
             date.add(order['day'])
     return all_date - date
 
+
 def write_file(content):
     with open('data/mkt_campaign.txt', 'w') as file:
         file.write(content)
+
 
 def analyze_log(path_to_file):
     data = read_csv_file(path_to_file)
