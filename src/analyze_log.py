@@ -13,16 +13,21 @@ def read_file_csv(path):
     return content
 
 
-def most_ordered_meal(client, orders):
-    food = {}
-
-    for requested_food in orders:
-        if client == requested_food['client']:
-            if requested_food['order'] not in food:
-                food[requested_food['order']] = 1
+def most_ordered_meal(customer, orders):
+    count = {}
+    most_frequent = 'teste'
+    count[most_frequent] = 0
+    for order in orders:
+        print(order['meal'])
+        if customer == order['client']:
+            if order['meal'] not in count:
+                count[order['meal']] = 1
             else:
-                food[requested_food['order']] += 1
-    return max(food, key=food.get)
+                count[order['meal']] += 1
+            if count[order['meal']] > count[most_frequent]:
+                most_frequent = order['meal']
+
+    return most_frequent
 
 
 def count_order(customer, meal, orders):
@@ -33,18 +38,17 @@ def count_order(customer, meal, orders):
     return count
 
 
-def food_never_ordered(client, orders):
-    order = set()
+def food_never_ordered(customer, orders):
+    meals_set = set()
+    for order in orders:
+        meals_set.add(order['meal'])
 
-    all_orders = set()
+    customer_set = set()
+    for order in orders:
+        if customer == order['client']:
+            customer_set.add(order['meal'])
 
-    for requested_food in orders:
-        all_orders.add(requested_food['order'])
-    for requested_food in orders:
-        if client == requested_food['client']:
-            order.add(requested_food['order'])
-
-    return all_orders - order
+    return meals_set - customer_set
 
 
 def write_file(content):
