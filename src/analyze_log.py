@@ -47,20 +47,21 @@ def get_dishes_that_joao_never_ate(all_orders):
     return all_dishes - dishes_that_joao_ate
 
 
+def get_all_days(all_orders):
+    """Retorna todos os dias que a lanchonete abre"""
+    return set([order[2] for order in all_orders])
+
+
 def get_days_that_joao_didnt_go_to_the_cafeteria(all_orders):
-    all_days = {
-        "domingo",
-        "segunda-feira",
-        "terça-feira",
-        "quarta-feira",
-        "quinta-feira",
-        "sexta-feira",
-        "sabado"}
+    """Retorna os dias que joao nunca foi a lanchonete"""
+    """de acordo com os dias que a lanchonete abre"""
+    all_days = get_all_days(all_orders)
     days_that_joao_went_to_the_cafeteria = set()
 
     for order in all_orders:
         if order[0] == "joao":
             days_that_joao_went_to_the_cafeteria.add(order[2])
+    print(all_days - days_that_joao_went_to_the_cafeteria)
     return all_days - days_that_joao_went_to_the_cafeteria
 
 
