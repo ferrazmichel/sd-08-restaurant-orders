@@ -14,41 +14,40 @@ def read_file_csv(path):
 
 
 def most_ordered_meal(customer, orders):
-    count = {}
-    most_frequent = 'teste'
-    count[most_frequent] = 0
-    for order in orders:
-        print(order['meal'])
-        if customer == order['client']:
-            if order['meal'] not in count:
-                count[order['meal']] = 1
-            else:
-                count[order['meal']] += 1
-            if count[order['meal']] > count[most_frequent]:
-                most_frequent = order['meal']
+    meals_count = {}
+    the_most = ""
 
-    return most_frequent
+    orders_by_custumer = filter(lambda o: o['client'] == customer, orders)
+
+    for order in orders_by_custumer:
+        actual_meal = order['meal']
+        if actual_meal not in meals_count:
+            meals_count[actual_meal] = 1
+        else:
+            meals_count[actual_meal] += 1
+        if the_most == "" or meals_count[actual_meal] > meals_count[the_most]:
+            the_most = actual_meal
+
+    return the_most
 
 
 def count_order(customer, meal, orders):
-    count = 0
-    for order in orders:
-        if customer == order['client'] and meal == order['meal']:
-            count += 1
-    return count
+    orders_filtered = list(filter(lambda o: o['client'] == customer
+                                  and o['meal'] == meal, orders))
+    return len(orders_filtered)
 
 
 def food_never_ordered(customer, orders):
-    meals_set = set()
+    meals_unique = set()
     for order in orders:
-        meals_set.add(order['meal'])
+        meals_unique.add(order['meal'])
 
-    customer_set = set()
-    for order in orders:
-        if customer == order['client']:
-            customer_set.add(order['meal'])
+    meals_unique_by_customer = set()
+    orders_by_custumer = filter(lambda o: o['client'] == customer, orders)
+    for order in orders_by_custumer:
+        meals_unique_by_customer.add(order['meal'])
 
-    return meals_set - customer_set
+    return meals_unique - meals_unique_by_customer
 
 
 def write_file(content):
@@ -60,18 +59,20 @@ def never_date(customer, orders):
     dates_set = set()
     for order in orders:
         dates_set.add(order['date'])
+
     customer_set = set()
-    for order in orders:
-        if customer == order['client']:
-            customer_set.add(order['date'])
+    orders_by_custumer = filter(lambda o: o['client'] == customer, orders)
+    for order in orders_by_custumer:
+        customer_set.add(order['date'])
+
     return dates_set - customer_set
 
 
 def analyze_log(path_to_file):
-    file_content = read_file_csv(path_to_file)
-    maria_order = most_ordered_meal('maria', file_content)
-    arnaldo_order = count_order('arnaldo', 'hamburguer', file_content)
-    joao_not_ordered = food_never_ordered('joao', file_content)
-    joao_date = never_date('joao', file_content)
-    file = f"{maria_order}\n{arnaldo_order}\n{joao_not_ordered}\n{joao_date}"
+    orders_history = read_file_csv(path_to_file)
+    most_order = most_ordered_meal('maria', orders_history)
+    count_ordered = count_order('arnaldo', 'hamburguer', orders_history)
+    meal_not_ordered = food_never_ordered('joao', orders_history)
+    no_order_day = never_date('joao', orders_history)
+    file = f"{most_order}\n{count_ordered}\n{meal_not_ordered}\n{no_order_day}"
     write_file(file)

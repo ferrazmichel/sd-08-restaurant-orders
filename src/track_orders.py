@@ -11,40 +11,44 @@ class TrackOrders:
         pass
 
     def get_most_ordered_dish_per_costumer(self, costumer):
-        count = {}
-        most_frequent = 'teste'
-        count[most_frequent] = 0
-        for order in self.orders:
-            if costumer == order['costumer']:
-                if order['order'] not in count:
-                    count[order['order']] = 1
-                else:
-                    count[order['order']] += 1
-                if count[order['order']] > count[most_frequent]:
-                    most_frequent = order['order']
+        meals_count = {}
+        most = ""
+        orders_by_custumer = filter(lambda o: o['costumer']
+                                    == costumer, self.orders)
 
-        return most_frequent
+        for order in orders_by_custumer:
+            actual_meal = order['order']
+            if actual_meal not in meals_count:
+                meals_count[actual_meal] = 1
+            else:
+                meals_count[actual_meal] += 1
+            if most == "" or meals_count[actual_meal] > meals_count[most]:
+                most = actual_meal
+
+        return most
 
     def get_never_ordered_per_costumer(self, costumer):
-        meals_set = set()
+        meals_unique = set()
         for order in self.orders:
-            meals_set.add(order['order'])
+            meals_unique.add(order['order'])
 
-        customer_set = set()
-        for order in self.orders:
-            if costumer == order['costumer']:
-                customer_set.add(order['order'])
+        meals_unique_by_customer = set()
+        cust_order = filter(lambda o: o['costumer'] == costumer, self.orders)
+        for order in cust_order:
+            meals_unique_by_customer.add(order['order'])
 
-        return meals_set - customer_set
+        return meals_unique - meals_unique_by_customer
 
     def get_days_never_visited_per_costumer(self, costumer):
         dates_set = set()
         for order in self.orders:
             dates_set.add(order['day'])
+
         customer_set = set()
-        for order in self.orders:
-            if costumer == order['costumer']:
-                customer_set.add(order['day'])
+        filter_order = filter(lambda o: o['costumer'] == costumer, self.orders)
+        for order in filter_order:
+            customer_set.add(order['day'])
+
         return dates_set - customer_set
 
     def get_busiest_day(self):
